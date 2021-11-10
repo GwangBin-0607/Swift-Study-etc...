@@ -33,6 +33,7 @@ print(address(of: &test))
 print(address(of: &testTwo))
 print(MemoryLayout.size(ofValue:first))//Stack Size
 print(class_getInstanceSize(First.self))//heap Size -> 기본적으로 8이 깔려있다
+print(CFGetRetainCount(first))//po CFGetRetainCount(first) // Terminal //strong만 체크 // CFGetRetainCount(first) default 2 // CFGetRetainCount(first) 호출시 1번 + 원래 1번
 
 
 class classType{
@@ -87,7 +88,21 @@ class caseTwo: caseOne {
     }
 }*/
 
-
+class GenericTest<T>{
+    let testProperty:T
+    init(TestProperty:T) {
+        testProperty = TestProperty
+    }
+}
+extension GenericTest where T == UIView{
+    func testFunction(of view:T){
+        
+    }
+}
+func testFunction<T,F>(Class:T,Struct:F){
+let property = Class
+    let structProperty = Struct
+}
 
 ///Generic
 /*func testFunc(a:inout Int?,b:inout Int!){
