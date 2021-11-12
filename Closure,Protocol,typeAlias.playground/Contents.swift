@@ -87,13 +87,44 @@ protocol testProtocol{
   
     func action()
 }
-protocol testSecondProtocol{
+ protocol testSecondProtocol{
   
     func actionSecond()
 }
+extension testSecondProtocol{
+    func actionSecond(){
+        
+    }
+}
 typealias testType = testProtocol&testSecondProtocol
 
+
+struct protocolTestStruct:Codable{
+    func action() {
+        
+    }
+    
+    func actionSecond() {
+        
+    }
+    
+    
+}
+var protocolTest:Codable? = [protocolTestStruct()] //가능
+
+struct _protocolTestStruct:testType{
+    func action() {
+        
+    }
+
+    
+}
+var _protocolTest:testType? = [_protocolTestStruct()]//불가능
+
 class medicines:testType{
+  
+    
+ 
     func actionSecond() {
         
     }

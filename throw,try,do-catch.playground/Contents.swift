@@ -43,3 +43,20 @@ class testB:testA{
 let testAValue = testA()
 let testBValue = testB()
 let test = testAValue as? testB
+func bindingError(of bindedString:String?) throws -> String{
+    guard let resultString = bindedString else{
+        throw TestError.outOfRange
+    }
+    return resultString
+}
+
+var property_error:String!
+var property_result:String?
+do {
+    
+    property_result = try bindingError(of:property_error)
+}catch{
+    print(error)
+}
+print(property_result)
+

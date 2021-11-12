@@ -10,7 +10,7 @@ import UIKit
 class ChildViewController: UIViewController {
 
     let lineView = UIView()
-    
+    var animator:UIViewControllerAnimatedTransitioning?
     override func loadView() {
         super.loadView()
         let subview = UIView()
@@ -37,7 +37,9 @@ class ChildViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("viewdidAppear===ChildViewController")
+    }
 
     /*
     // MARK: - Navigation

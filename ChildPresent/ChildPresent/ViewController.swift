@@ -42,11 +42,17 @@ class ViewController: UIViewController {
     }
     @objc func presentAction(){
         print("action")
+        //self.presentedViewCon.modalPresentationStyle = .fullScreen
+       
         self.presentedViewCon.modalPresentationStyle = .custom
         self.presentedViewCon.transitioningDelegate = self
-        self.childViewCon.present(presentedViewCon, animated: true, completion: nil)
+        self.present(presentedViewCon, animated: true, completion: nil)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("viewdidAppear===ViewController")
+    }
 }
 extension ViewController:UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -56,7 +62,6 @@ extension ViewController:UIViewControllerTransitioningDelegate{
         let testAProperty = testA()
         testBProperty.delegate = testAProperty*/
         return self.animator
-      
     }
 }
 /*class testA:UIView{
