@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     let childView = UIView()
     let childViewCon = ChildViewController()
     let presentedViewCon = PresentedViewController()
-    var animator:UIViewControllerAnimatedTransitioning?
+    var animator:Animator?
     let presentBtn = UIButton()
     let consoleBtn = UIButton()
     override func viewDidLoad() {
@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     }
     @objc func consoleLog(){
         print("console")
+        
     }
     @objc func presentAction(){
         print("action")
@@ -58,9 +59,14 @@ extension ViewController:UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         print("present")
         self.animator = Animator()
+        self.animator?.isPresent = true
         /*let testBProperty = testB()
         let testAProperty = testA()
         testBProperty.delegate = testAProperty*/
+        return self.animator
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.animator?.isPresent = false
         return self.animator
     }
 }

@@ -21,6 +21,14 @@ class PresentedViewController: UIViewController {
     
     @objc func consoleLog(){
         print("console")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewdidAppear===PresentedViewController")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        print("viewdidDisAppear===PresentedViewController")
     }
     /*
     // MARK: - Navigation
@@ -32,4 +40,43 @@ class PresentedViewController: UIViewController {
     }
     */
 
+}
+class A{
+    init(h:String){
+        
+    }
+}
+class B:A{
+    override init(h: String) {
+        super.init(h: h)
+    }
+    init(b:String) {
+        super.init(h: b)
+       
+    }
+}
+class C:UIViewController{
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+class D:UITableViewController{
+  
+    override init(style: UITableView.Style) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+class E:B{
+    override init(h: String) {
+        super.init(b: h)
+    }
 }
