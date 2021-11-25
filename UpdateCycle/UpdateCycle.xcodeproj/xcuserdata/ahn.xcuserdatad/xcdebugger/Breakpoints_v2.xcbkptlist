@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "5DD448B7-91BC-41C3-92B7-C2AD903025A9"
+   uuid = "C83BE77E-79DA-4183-974C-BB196C652AD6"
    type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "84870825-8774-44F1-80A6-1CF963A40F56"
-            shouldBeEnabled = "Yes"
+            uuid = "21AE9545-C3FD-406B-9D80-998CD178F91E"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChildPresent/animator.swift"
+            filePath = "UpdateCycle/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "animateTransition(using:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "viewDidLayoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9A502618-FC70-445F-88B9-7C45D0DC84B5"
-            shouldBeEnabled = "Yes"
+            uuid = "232CAADB-F0A6-4F30-B934-7D60AE8F712F"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChildPresent/animator.swift"
+            filePath = "UpdateCycle/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "animateTransition(using:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E056C63E-DA1C-400D-9610-760C34D7C228"
-            shouldBeEnabled = "Yes"
+            uuid = "C2F845BE-2D7E-4F95-B563-72DAB18F4259"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChildPresent/animator.swift"
+            filePath = "UpdateCycle/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "animateTransition(using:)"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

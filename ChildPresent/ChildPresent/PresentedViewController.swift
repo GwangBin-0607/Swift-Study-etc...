@@ -16,16 +16,25 @@ class PresentedViewController: UIViewController {
         consoleBtn.frame = CGRect(x: 100, y: 100.0, width: 60.0, height: 60.0)
         consoleBtn.backgroundColor = .systemPink
         consoleBtn.addTarget(self, action: #selector(consoleLog), for: .touchUpInside)
+        print(self.presentingViewController?.presentedViewController)
+        print(self.presentingViewController)
         // Do any additional setup after loading the view.
     }
     
     @objc func consoleLog(){
-        print("console")
+        //print("console")
         self.dismiss(animated: true, completion: nil)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear===PresentedViewController")
+    }
     override func viewDidAppear(_ animated: Bool) {
         print("viewdidAppear===PresentedViewController")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisAppear===PresentedViewController")
     }
     override func viewDidDisappear(_ animated: Bool) {
         print("viewdidDisAppear===PresentedViewController")

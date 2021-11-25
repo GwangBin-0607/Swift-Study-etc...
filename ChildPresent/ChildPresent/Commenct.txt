@@ -1,0 +1,8 @@
+Presented Viewcontroller(=PresentedViewController)는 beginAppearanceTransition,endAppearanceTransition없어도
+Life Cycle이 잘돈다.
+ViewController 자체도 modalPresentationStyle이 custom이면 Life Cycle이 돌지 않는다
+Apple Document에는 Custom Container일때
+beginAppearanceTransition,endAppearanceTransition를 써주라고 나오는데
+ViewController가 Custom Container가 아닌데도 써줘야지 Life Cycle이 돈다.
+
+

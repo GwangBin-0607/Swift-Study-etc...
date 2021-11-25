@@ -35,6 +35,9 @@ class ViewController: UIViewController {
         consoleBtn.backgroundColor = .systemPink
         consoleBtn.addTarget(self, action: #selector(consoleLog), for: .touchUpInside)
         
+        
+        self.animator = Animator()
+        
         // Do any additional setup after loading the view.
     }
     @objc func consoleLog(){
@@ -50,15 +53,25 @@ class ViewController: UIViewController {
         self.present(presentedViewCon, animated: true, completion: nil)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear===ViewController")
+    }
+    override func viewDidAppear(_ animated: Bool) {
         print("viewdidAppear===ViewController")
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisAppear===ViewController")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        print("viewdidDisAppear===ViewController")
+    }
+    
 }
 extension ViewController:UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         print("present")
-        self.animator = Animator()
         self.animator?.isPresent = true
         /*let testBProperty = testB()
         let testAProperty = testA()
@@ -66,9 +79,52 @@ extension ViewController:UIViewControllerTransitioningDelegate{
         return self.animator
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        print("dismiss")
         self.animator?.isPresent = false
         return self.animator
+        
     }
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        print("method Call")
+        let custom = CustomPresent(presentedViewController: presented, presenting: presenting)
+        return custom
+    }
+    
+            
+}
+class CustomPresent:UIPresentationController{
+    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+        self.containerView?.backgroundColor = .blue
+    }
+    override func presentationTransitionWillBegin() {
+        print("begin")
+        let dimmingView = UIView()
+        dimmingView.frame = CGRect(x: 10, y: 10, width: 20, height: 20)
+        dimmingView.backgroundColor = .red
+        dimmingView.alpha = 0.0
+        self.containerView?.addSubview(dimmingView)
+        
+        let transitionCoordinator = self.presentingViewController.transitionCoordinator
+        transitionCoordinator?.animate(alongsideTransition: {
+            (context) in
+            context.containerView.backgroundColor = .systemGreen
+            dimmingView.alpha = 1.0
+        }, completion: nil)
+        
+    }
+    override func presentationTransitionDidEnd(_ completed: Bool) {
+        print("end")
+    }
+    override func dismissalTransitionWillBegin() {
+        print("dismiss-Begin")
+    }
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
+        print("dismiss-End")
+    }
+    
+    
+    
 }
 /*class testA:UIView{
     

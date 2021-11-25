@@ -27,6 +27,8 @@ var test = 123
 var testTwo = 456
 print(first.self)
 print(second.self)
+print(test.self)
+print(test.self)
 print(address(of: &first))
 print(address(of: &second))
 print(address(of: &test))
@@ -34,7 +36,10 @@ print(address(of: &testTwo))
 print(MemoryLayout.size(ofValue:first))//Stack Size
 print(class_getInstanceSize(First.self))//heap Size -> 기본적으로 8이 깔려있다
 print(CFGetRetainCount(first))//po CFGetRetainCount(first) // Terminal //strong만 체크 // CFGetRetainCount(first) default 2 // CFGetRetainCount(first) 호출시 1번 + 원래 1번
-
+withUnsafePointer(to: first, {
+    pa in
+    print("\(pa)===")
+})
 
 class classType{
     let resultProperty:Int
@@ -103,7 +108,13 @@ func testFunction<T,F>(Class:T,Struct:F){
 let property = Class
     let structProperty = Struct
 }
-
+/*func testFuncInout(a:inout Int?,b:inout Int!){
+    a = 300
+    b = 500
+}
+var hi:Int?
+var hello:Int?
+testFuncInout(a: &hi, b: &hello)*/
 ///Generic
 /*func testFunc(a:inout Int?,b:inout Int!){
     a = 300

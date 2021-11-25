@@ -37,8 +37,16 @@ class ChildViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear===ChildViewController")
+    }
     override func viewDidDisappear(_ animated: Bool) {
         print("viewdidDisAppear===ChildViewController")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisAppear===ChildViewController")
     }
     override func viewDidAppear(_ animated: Bool) {
         print("viewdidAppear===ChildViewController")

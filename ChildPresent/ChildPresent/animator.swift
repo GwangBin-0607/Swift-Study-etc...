@@ -19,7 +19,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
        
         if isPresent{
             firstViewCon = transitionContext.viewController(forKey: .to)
-            print(transitionContext.viewController(forKey: .from))
+            //print(transitionContext.viewController(forKey: .from))
             let containerView = transitionContext.containerView
             guard let presentedViewCon = transitionContext.viewController(forKey: .from) as? ViewController,
             let presentedView = transitionContext.view(forKey: .to)
@@ -29,9 +29,9 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
           }
             presentViewCon = presentedViewCon
             
-            print("animate")
-            print(containerView)
-            print(containerView.superview)
+            //print("animate")
+            //print(containerView)
+            //print(containerView.superview)
             containerView.translatesAutoresizingMaskIntoConstraints = false
             containerView.topAnchor.constraint(equalTo: presentedViewCon.childViewCon.view.topAnchor).isActive = true
             containerView.leadingAnchor.constraint(equalTo: presentedViewCon.childViewCon.view.leadingAnchor).isActive = true
@@ -39,11 +39,11 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             containerView.bottomAnchor.constraint(equalTo: presentedViewCon.childViewCon.view.bottomAnchor).isActive = true
             //containerView.backgroundColor = .systemPink
             
-            firstViewCon.beginAppearanceTransition(true, animated: true)
-            presentViewCon.childViewCon.beginAppearanceTransition(false, animated: true)
+            //firstViewCon.beginAppearanceTransition(true, animated: true)
+            //presentViewCon.childViewCon.beginAppearanceTransition(false, animated: true)
             containerView.addSubview(presentedView)
             presentedView.alpha = 0.0
-            print(presentedView.superview)
+            //print(presentedView.superview)
             presentedView.translatesAutoresizingMaskIntoConstraints = false
             presentedView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
@@ -65,10 +65,10 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             print("error")
             return
           }
-            print(firstViewCon.view.frame) // Reference Type 이기 때문에 참조된 값의 프레임을 갖고 온다 따라서 Present시에 잡혔던 프레임 값이 그대로 갖고온다.
+            //print(firstViewCon.view.frame) // Reference Type 이기 때문에 참조된 값의 프레임을 갖고 온다 따라서 Present시에 잡혔던 프레임 값이 그대로 갖고온다.->참조카운트는 한번더봐야겠음 ㅋ
             presentViewCon = presentedViewCon
-            firstViewCon.beginAppearanceTransition(false, animated: true)
-            presentViewCon.childViewCon.beginAppearanceTransition(true, animated: true)
+            //firstViewCon.beginAppearanceTransition(false, animated: true)
+            //presentViewCon.childViewCon.beginAppearanceTransition(true, animated: true)
             UIView.animate(withDuration: 2.0, animations: {
                 presentedView.alpha = 0.0
             },completion: {
@@ -87,8 +87,8 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         
         if transitionCompleted{
             print("end!!")
-            firstViewCon.endAppearanceTransition()
-            presentViewCon.childViewCon.endAppearanceTransition()
+            //firstViewCon.endAppearanceTransition()!!!!!!!!!애는 없어도 되네? apple 공식문서에 ChildView에만 알려주라고 했다...
+            //presentViewCon.childViewCon.endAppearanceTransition()
         }
         
     }
