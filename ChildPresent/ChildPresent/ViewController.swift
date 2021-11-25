@@ -10,13 +10,15 @@ import UIKit
 class ViewController: UIViewController {
 
     let childView = UIView()
-    let childViewCon = ChildViewController()
+    let child = ChildViewController()
+    var childViewCon:UINavigationController!
     let presentedViewCon = PresentedViewController()
     var animator:Animator?
     let presentBtn = UIButton()
     let consoleBtn = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
+        childViewCon = UINavigationController(rootViewController: child)
         self.view.addSubview(childView)
         childView.frame = CGRect(x: 0.0, y: 0.0, width: 200, height: 300)
         childView.backgroundColor = .systemBlue
@@ -48,9 +50,10 @@ class ViewController: UIViewController {
         print("action")
         //self.presentedViewCon.modalPresentationStyle = .fullScreen
        
-        self.presentedViewCon.modalPresentationStyle = .custom
+        /*self.presentedViewCon.modalPresentationStyle = .custom
         self.presentedViewCon.transitioningDelegate = self
-        self.present(presentedViewCon, animated: true, completion: nil)
+        self.present(presentedViewCon, animated: true, completion: nil)*/
+        child.navigationController!.pushViewController(presentedViewCon, animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
