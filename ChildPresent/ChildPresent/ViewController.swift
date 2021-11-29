@@ -22,10 +22,10 @@ class ViewController: UIViewController {
         self.view.addSubview(childView)
         childView.frame = CGRect(x: 0.0, y: 0.0, width: 200, height: 300)
         childView.backgroundColor = .systemBlue
-        self.addChild(childViewCon)
-        childViewCon.didMove(toParent: self)
-        childViewCon.view.frame = childView.frame
-        childView.addSubview(childViewCon.view)
+        self.addChild(child)
+        child.didMove(toParent: self)
+        child.view.frame = childView.frame
+        childView.addSubview(child.view)
         
         self.view.addSubview(presentBtn)
         presentBtn.frame = CGRect(x: 250, y: 20.0, width: 60.0, height: 60.0)
@@ -50,10 +50,10 @@ class ViewController: UIViewController {
         print("action")
         //self.presentedViewCon.modalPresentationStyle = .fullScreen
        
-        /*self.presentedViewCon.modalPresentationStyle = .custom
+        self.presentedViewCon.modalPresentationStyle = .custom
         self.presentedViewCon.transitioningDelegate = self
-        self.present(presentedViewCon, animated: true, completion: nil)*/
-        child.navigationController!.pushViewController(presentedViewCon, animated: true)
+        self.present(presentedViewCon, animated: true, completion: nil)
+        //child.navigationController!.pushViewController(presentedViewCon, animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,11 +87,11 @@ extension ViewController:UIViewControllerTransitioningDelegate{
         return self.animator
         
     }
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    /*func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         print("method Call")
         let custom = CustomPresent(presentedViewController: presented, presenting: presenting)
         return custom
-    }
+    }*/
     
             
 }

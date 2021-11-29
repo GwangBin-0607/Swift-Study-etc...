@@ -33,10 +33,10 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             //print(containerView)
             //print(containerView.superview)
             containerView.translatesAutoresizingMaskIntoConstraints = false
-            containerView.topAnchor.constraint(equalTo: presentedViewCon.childViewCon.view.topAnchor).isActive = true
-            containerView.leadingAnchor.constraint(equalTo: presentedViewCon.childViewCon.view.leadingAnchor).isActive = true
-            containerView.trailingAnchor.constraint(equalTo: presentedViewCon.childViewCon.view.trailingAnchor).isActive = true
-            containerView.bottomAnchor.constraint(equalTo: presentedViewCon.childViewCon.view.bottomAnchor).isActive = true
+            containerView.topAnchor.constraint(equalTo: presentedViewCon.child.view.topAnchor).isActive = true
+            containerView.leadingAnchor.constraint(equalTo: presentedViewCon.child.view.leadingAnchor).isActive = true
+            containerView.trailingAnchor.constraint(equalTo: presentedViewCon.child.view.trailingAnchor).isActive = true
+            containerView.bottomAnchor.constraint(equalTo: presentedViewCon.child.view.bottomAnchor).isActive = true
             //containerView.backgroundColor = .systemPink
             
             //firstViewCon.beginAppearanceTransition(true, animated: true)
