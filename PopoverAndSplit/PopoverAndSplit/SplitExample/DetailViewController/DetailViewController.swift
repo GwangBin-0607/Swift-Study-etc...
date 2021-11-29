@@ -1,31 +1,24 @@
 //
-//  SplitViewController.swift
+//  DetailViewController.swift
 //  PopoverAndSplit
 //
-//  Created by Ahn on 2021/11/25.
+//  Created by Ahn on 2021/11/29.
 //
 
 import UIKit
 
-class SplitViewController: UISplitViewController {
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        print("init -- SplitViewController")
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        print("\(coder)====SplitViewController")
-    }
-    deinit {
-        print("deinit--SplitViewController")
+class DetailViewController: UIViewController {
+    override func loadView(){
+        super.loadView()
+        print("loadView -- DetailViewController")
+        let subview = UIView()
+        subview.backgroundColor = .systemYellow
+        
+        self.view = subview
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
+        self.view.backgroundColor = .red
         // Do any additional setup after loading the view.
     }
     

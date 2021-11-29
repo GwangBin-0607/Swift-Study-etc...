@@ -8,10 +8,21 @@
 import UIKit
 
 class TableViewController: UITableViewController {
+    override func loadView(){
+        super.loadView()
+        print("loadView -- TableViewController")
+        let subview = UITableView()
+        subview.backgroundColor = .systemYellow
+        
+        self.view = subview
+    }
 
+    let tableList:[TableModel] = [TableModel(name: "gwangbin", age: 27),TableModel(name: "jinwoo", age: 27),TableModel(name: "jaemoon", age: 27),TableModel(name: "hggeun", age: 27)]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCellPage")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -28,14 +39,14 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 50
+        return tableList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCellPage", for: indexPath) as! TableViewCell
         
-        cell.titleLabel.text = String(indexPath.row)
+        cell.titleLabel.text = tableList[indexPath.row].name
         // Configure the cell...
 
         return cell
