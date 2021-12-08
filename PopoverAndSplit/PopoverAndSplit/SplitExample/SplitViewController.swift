@@ -8,16 +8,8 @@
 import UIKit
 
 class SplitViewController: UISplitViewController {
-    let firstViewConroller = UINavigationController(rootViewController: TableViewController())
-    let secondViewController = UINavigationController(rootViewController: DetailViewController())
    
-    override var preferredPrimaryColumnWidthFraction: CGFloat{
-        get{
-            return 1/3
-        }set{
-            
-        }
-    }
+   
     /*override var viewControllers: [UIViewController]{
         get{
             print(firstViewConroller)
@@ -27,7 +19,10 @@ class SplitViewController: UISplitViewController {
             
         }
     }*/
-
+    override init(style: UISplitViewController.Style) {
+        super.init(style: style)
+        print("init Style -- SplitViewController")
+    }
     init() {
         super.init(nibName: nil, bundle: nil)
         print("init -- SplitViewController")
@@ -43,6 +38,7 @@ class SplitViewController: UISplitViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
         
 
@@ -76,7 +72,9 @@ class TestClassA{
     var closure:(()->Void)?
     weak var friend:TestClassA?
     var image:UIImageView = {
-        return UIImageView()
+        let mainImageView = UIImageView()
+        mainImageView.tag = 150
+        return mainImageView
     }()
     init(){
         

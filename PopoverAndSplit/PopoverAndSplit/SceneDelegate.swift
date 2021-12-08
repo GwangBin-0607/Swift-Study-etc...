@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
 
@@ -17,13 +17,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        let split = SplitViewController()
+        let split = SplitViewController(style:.doubleColumn)
         //print(split.firstViewConroller)
         //print(split.secondViewController)
         let navi = UINavigationController(rootViewController: TableViewController())
         let detail = UINavigationController(rootViewController: DetailViewController())
         
         let aProperty = TestClassA()
+        print(aProperty.image.tag)
+        aProperty.image.tag = 300
+        print(aProperty.image.tag)
         let aTwoProperty = TestClassA()
         aTwoProperty.friend = aProperty
         aTwoProperty.closure = {
@@ -34,14 +37,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print(navi)
         print(detail)
         print("set ViewControllers")
+        split.preferredDisplayMode = .oneBesideSecondary
         split.viewControllers = [navi,detail]
         split.preferredPrimaryColumnWidthFraction = 1/3
+        
+        split.delegate = self
         print(split.viewControllers)
         window?.rootViewController = split
         window?.makeKeyAndVisible()
     
     }
-
+    func splitViewController(_ svc: UISplitViewController, topColumnForCollapsingToProposedTopColumn proposedTopColumn: UISplitViewController.Column) -> UISplitViewController.Column {
+        return .primary
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

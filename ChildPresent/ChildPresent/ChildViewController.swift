@@ -42,6 +42,7 @@ class ChildViewController: UIViewController {
         print("viewWillAppear===ChildViewController")
     }
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         print("viewdidDisAppear===ChildViewController")
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,6 +50,7 @@ class ChildViewController: UIViewController {
         print("viewWillDisAppear===ChildViewController")
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         print("viewdidAppear===ChildViewController")
     }
 

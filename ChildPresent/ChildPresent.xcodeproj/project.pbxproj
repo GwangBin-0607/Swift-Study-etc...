@@ -18,6 +18,9 @@
 		D42138A22702F6A20051FAE7 /* ChildPresentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42138A12702F6A20051FAE7 /* ChildPresentUITests.swift */; };
 		D42138B02702F6AE0051FAE7 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42138AF2702F6AE0051FAE7 /* ChildViewController.swift */; };
 		D42138B22702F8E90051FAE7 /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42138B12702F8E90051FAE7 /* PresentedViewController.swift */; };
+		D47E7D902760491700A29330 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = D47E7D8F2760491700A29330 /* ReadMe.txt */; };
+		D47E7D9227604B2600A29330 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E7D9127604B2600A29330 /* FirstViewController.swift */; };
+		D47E7D9427604B2D00A29330 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E7D9327604B2D00A29330 /* SecondViewController.swift */; };
 		D4EF0C81273A164300716FD3 /* animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EF0C80273A164300716FD3 /* animator.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,9 @@
 		D42138A32702F6A20051FAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D42138AF2702F6AE0051FAE7 /* ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		D42138B12702F8E90051FAE7 /* PresentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentedViewController.swift; sourceTree = "<group>"; };
+		D47E7D8F2760491700A29330 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		D47E7D9127604B2600A29330 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D47E7D9327604B2D00A29330 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D4EF0C80273A164300716FD3 /* animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +93,7 @@
 		D42138732702F69E0051FAE7 = {
 			isa = PBXGroup;
 			children = (
+				D47E7D8F2760491700A29330 /* ReadMe.txt */,
 				D421387E2702F69E0051FAE7 /* ChildPresent */,
 				D42138952702F6A20051FAE7 /* ChildPresentTests */,
 				D42138A02702F6A20051FAE7 /* ChildPresentUITests */,
@@ -112,6 +119,7 @@
 				D42138832702F69E0051FAE7 /* ViewController.swift */,
 				D42138AF2702F6AE0051FAE7 /* ChildViewController.swift */,
 				D42138B12702F8E90051FAE7 /* PresentedViewController.swift */,
+				D47E7D9527604B3100A29330 /* modalPresentStyle */,
 				D4EF0C80273A164300716FD3 /* animator.swift */,
 				D42138852702F69E0051FAE7 /* Main.storyboard */,
 				D42138882702F6A20051FAE7 /* Assets.xcassets */,
@@ -138,6 +146,15 @@
 				D42138A32702F6A20051FAE7 /* Info.plist */,
 			);
 			path = ChildPresentUITests;
+			sourceTree = "<group>";
+		};
+		D47E7D9527604B3100A29330 /* modalPresentStyle */ = {
+			isa = PBXGroup;
+			children = (
+				D47E7D9327604B2D00A29330 /* SecondViewController.swift */,
+				D47E7D9127604B2600A29330 /* FirstViewController.swift */,
+			);
+			path = modalPresentStyle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +262,7 @@
 			files = (
 				D421388C2702F6A20051FAE7 /* LaunchScreen.storyboard in Resources */,
 				D42138892702F6A20051FAE7 /* Assets.xcassets in Resources */,
+				D47E7D902760491700A29330 /* ReadMe.txt in Resources */,
 				D42138872702F69E0051FAE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +291,8 @@
 				D42138842702F69E0051FAE7 /* ViewController.swift in Sources */,
 				D42138802702F69E0051FAE7 /* AppDelegate.swift in Sources */,
 				D418CA4C27477533008488CB /* Commenct.txt in Sources */,
+				D47E7D9427604B2D00A29330 /* SecondViewController.swift in Sources */,
+				D47E7D9227604B2600A29330 /* FirstViewController.swift in Sources */,
 				D4EF0C81273A164300716FD3 /* animator.swift in Sources */,
 				D42138822702F69E0051FAE7 /* SceneDelegate.swift in Sources */,
 				D42138B22702F8E90051FAE7 /* PresentedViewController.swift in Sources */,
@@ -480,6 +500,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JMTrue.ChildPresent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = release;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -579,7 +600,7 @@
 				D42138A52702F6A20051FAE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D42138A62702F6A20051FAE7 /* Build configuration list for PBXNativeTarget "ChildPresent" */ = {
 			isa = XCConfigurationList;
@@ -588,7 +609,7 @@
 				D42138A82702F6A20051FAE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D42138A92702F6A20051FAE7 /* Build configuration list for PBXNativeTarget "ChildPresentTests" */ = {
 			isa = XCConfigurationList;
@@ -597,7 +618,7 @@
 				D42138AB2702F6A20051FAE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D42138AC2702F6A20051FAE7 /* Build configuration list for PBXNativeTarget "ChildPresentUITests" */ = {
 			isa = XCConfigurationList;
@@ -606,7 +627,7 @@
 				D42138AE2702F6A20051FAE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
