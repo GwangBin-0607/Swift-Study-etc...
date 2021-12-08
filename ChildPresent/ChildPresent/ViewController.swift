@@ -35,16 +35,22 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         self.view.addSubview(childView)
         childView.frame = CGRect(x: 0.0, y: 0.0, width: 200, height: 300)
         childView.backgroundColor = .systemBlue
+<<<<<<< HEAD
         /*self.addChild(childViewCon)
         childViewCon.didMove(toParent: self)
         childViewCon.view.frame = childView.frame
         childView.addSubview(childViewCon.view)*/
         //child.preferredContentSize = CGSize(width: 500, height: 500)
+=======
+>>>>>>> 0881761e82c627317a1a73f5e08627739c4a9e8c
         self.addChild(child)
         child.didMove(toParent: self)
         child.view.frame = childView.frame
         childView.addSubview(child.view)
+<<<<<<< HEAD
         
+=======
+>>>>>>> 0881761e82c627317a1a73f5e08627739c4a9e8c
         
         self.view.addSubview(presentBtn)
         presentBtn.frame = CGRect(x: 250, y: 20.0, width: 60.0, height: 60.0)
@@ -86,10 +92,17 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @objc func presentAction(){
         print("action")
         //self.presentedViewCon.modalPresentationStyle = .fullScreen
+<<<<<<< HEAD
         
         self.presentedViewCon.modalPresentationStyle = .custom
          self.presentedViewCon.transitioningDelegate = self
          self.present(presentedViewCon, animated: true, completion: nil)
+=======
+       
+        self.presentedViewCon.modalPresentationStyle = .custom
+        self.presentedViewCon.transitioningDelegate = self
+        self.present(presentedViewCon, animated: true, completion: nil)
+>>>>>>> 0881761e82c627317a1a73f5e08627739c4a9e8c
         //child.navigationController!.pushViewController(presentedViewCon, animated: true)
     }
     override func viewDidLayoutSubviews() {
@@ -134,12 +147,12 @@ extension ViewController:UIViewControllerTransitioningDelegate{
         return self.animator
         
     }
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    /*func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         print("method Call")
         let custom = CustomPresent(presentedViewController: presented, presenting: presenting)
         let hi = UIPopoverPresentationController(presentedViewController: presented, presenting: presenting)
         return custom
-    }
+    }*/
     
     
 }

@@ -22,7 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
         //print(split.secondViewController)
         let navi = UINavigationController(rootViewController: TableViewController())
         let detail = UINavigationController(rootViewController: DetailViewController())
+        let caLayer = CALayer()
         
+        let uiView = UIView()
+        print(MemoryLayout.size(ofValue: caLayer))
+        print(class_getInstanceSize(CALayer.self))
+        print(MemoryLayout.size(ofValue: caLayer))
+        print(class_getInstanceSize(UIView.self))
         let aProperty = TestClassA()
         print(aProperty.image.tag)
         aProperty.image.tag = 300
