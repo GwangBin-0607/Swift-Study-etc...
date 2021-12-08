@@ -2,7 +2,21 @@
 
 import Foundation
 import UIKit
-
+var functionProperty:(String,Int)->Void = {
+    (hello,hi) in
+    print(hello)
+    print(hi)
+}
+var hey = functionProperty
+functionProperty("hihi",456)
+hey = {
+    (other,good) in
+    print(good)
+    print(other)
+}
+hey("hello",123)
+functionProperty("hihi",456)
+//print(CFGetRetainCount(functionProperty))
 /*Stack,Heap // Value,Reference*/
  func address(of object: UnsafeRawPointer) -> String{
     let address = Int(bitPattern: object)
