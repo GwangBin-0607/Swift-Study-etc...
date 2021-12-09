@@ -144,3 +144,35 @@ ServerManager.manager.serverState = .run//Closure가 실행되기 전에 serverS
  var test:HTMLElement? = HTMLElement(name: "admin")
  //test?.asHTML() -> 실행시키지않으면 참조는 이뤄 지지 않는다 왜? lazy 키워드는 사용될 때 초기화 되기 때문이다.즉 asHTML()을 하지않으면 클로저도 생성이 되지 않는다-> self가 캡쳐가 되지않는다.
  test = nil*/
+
+//중첩클로저
+
+func beforeClosure(name:String,beforeCompletion:@escaping ()->Void){
+    print("beforeTask Start")
+    //print(beforeCompletion)
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(Int(2.0))) {
+        //Server에서 값을 받는다는 가정 값을 받기까지 2.0초 걸린다.
+        print("beforeTask Complete")
+        //print(beforeCompletion)
+        afterClosure(afterClosure: {
+            (name) in
+            beforeCompletion()
+        })
+        
+      
+    }
+}
+func afterClosure(afterClosure:@escaping (_ remainName:String)->Void){
+    print("afterTask Start")
+   // print(afterClosure)
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(Int(2.0))) {
+        //Server에서 값을 받는다는 가정 값을 받기까지 2.0초 걸린다.
+        print("afterTask Complete")
+        //print(afterClosure)
+        afterClosure("hello")
+      
+    }
+}
+
+
+
