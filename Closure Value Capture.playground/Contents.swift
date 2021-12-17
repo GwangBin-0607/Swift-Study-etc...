@@ -1,4 +1,55 @@
 import UIKit
+import Foundation
+
+
+class ser{
+    var number = 10
+}
+class test{
+    let serpro = ser()
+    lazy var second = serpro
+    lazy var clo = {
+        [serpro] in
+        print(serpro)
+    }
+   
+}
+
+let pro  = test()
+pro.clo()
+print(CFGetRetainCount(pro))
+print(pro.second)
+print("\(CFGetRetainCount(pro.serpro))===========")
+print("\(pro.serpro.number)===========")
+pro.serpro.number = 100
+print("\(pro.serpro.number)===========")
+
+
+func databaseQuery(closure:@escaping ()->Void){
+    DispatchQueue.main.asyncAfter(deadline:DispatchTime(uptimeNanoseconds: UInt64(2.0)), execute: {
+        closure()
+    })
+    //closure()
+    
+}
+func basicPrint(number:Int){
+    print("BASIC========\(number)")
+}
+for i in 0..<10{
+    print(i)
+    basicPrint(number: i)
+    DispatchQueue.main.async {
+        databaseQuery {
+            print("Query=============\(i)")
+        }
+    }
+   
+}
+
+
+
+
+
 
 class Person{
     var name:String!
