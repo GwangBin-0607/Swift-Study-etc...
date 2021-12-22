@@ -48,7 +48,7 @@ var testFour = 789//Value Type
 //print(test.self)
 //print(test.self)
 print(address(of: &first))//1
-print(MemoryLayout.size(ofValue:first))
+print(MemoryLayout.size(ofValue:first))//단위는 Byte = (8 Bit)
 print(address(of: &second))
 print(MemoryLayout.size(ofValue:second))
 print(test)
