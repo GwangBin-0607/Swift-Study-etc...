@@ -45,6 +45,7 @@ protocol ProtocolTest{
     var hobby:String?{get set}
     var ball:String{get}
     func showName()
+    func showAge()
 }
 extension ProtocolTest{
     func showName(){
@@ -71,5 +72,11 @@ extension ProtocolTest{
     }
 }
 class ProtocolClass:ProtocolTest{
+    func showAge() {
+        print("age is",self.age)
+    }
+    
     var age: Int? = 100
 }
+let protocolProperty = ProtocolClass()
+protocolProperty.showAge()
