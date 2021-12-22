@@ -19,6 +19,7 @@ functionProperty("hihi",456)
 //print(CFGetRetainCount(functionProperty))
 /*Stack,Heap // Value,Reference*/
  func address(of object: UnsafeRawPointer) -> String{
+     //print(object)
     let address = Int(bitPattern: object)
     return String(format: "%p", address)
 }
@@ -35,25 +36,44 @@ class Second:First{
 }
 
 
-var first = First()
-var second = first
-var test = 123
-var testTwo = 456
-print(first.self)
-print(second.self)
-print(test.self)
-print(test.self)
-print(address(of: &first))
+
+var first = First()//Reference Type
+var second = first//Reference Type
+var test = 123//Value Type
+var testTwo:Int? = 456//Value Type
+var testThree:Int? = 789//Value Type
+var testFour = 789//Value Type
+//print(first.self)//값이 주소이다 주소는 힙의 주소
+//print(second.self)
+//print(test.self)
+//print(test.self)
+print(address(of: &first))//1
+print(MemoryLayout.size(ofValue:first))
 print(address(of: &second))
+print(MemoryLayout.size(ofValue:second))
+print(test)
 print(address(of: &test))
+print(MemoryLayout.size(ofValue:test))
+test = 345
+print(test)
+print(address(of: &test))
+print(MemoryLayout.size(ofValue:test))
 print(address(of: &testTwo))
-print(MemoryLayout.size(ofValue:first))//Stack Size
+print(MemoryLayout.size(ofValue:testTwo))
+print(address(of: &testThree))
+print(MemoryLayout.size(ofValue:testThree))
+print(address(of: &testFour))
+print(MemoryLayout.size(ofValue:testFour))
+
+//Stack Size
 print(class_getInstanceSize(First.self))//heap Size -> 기본적으로 8이 깔려있다
 print(CFGetRetainCount(first))//po CFGetRetainCount(first) // Terminal //strong만 체크 // CFGetRetainCount(first) default 2 // CFGetRetainCount(first) 호출시 1번 + 원래 1번
 withUnsafePointer(to: first, {
     pa in
     print("\(pa)===")
-})
+})//2
+///1,2이 주소가 다른데 확실하게는 모르겠으나 RAW의 차이가 있는듯 하다.
+
 
 class classType{
     let resultProperty:Int
