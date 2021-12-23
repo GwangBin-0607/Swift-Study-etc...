@@ -8,9 +8,14 @@
 import UIKit
 
 class SecondViewController: UIViewController {
+    override func loadView() {
+        super.loadView()
+        print("loadView===SecondViewController")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad===SecondViewController")
         self.view.backgroundColor = .white//StoryBoard가 없으면 해줘야함
 
         // Do any additional setup after loading the view.

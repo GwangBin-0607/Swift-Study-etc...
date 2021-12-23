@@ -9,8 +9,13 @@ import UIKit
 
 class PresentedViewController: UIViewController {
     let consoleBtn = UIButton()
+    override func loadView() {
+        super.loadView()
+        print("loadView===PresentedViewController")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad===PresentedViewController")
         self.view.backgroundColor = .systemTeal
         self.view.addSubview(consoleBtn)
         consoleBtn.frame = CGRect(x: 100, y: 100.0, width: 60.0, height: 60.0)
@@ -19,6 +24,10 @@ class PresentedViewController: UIViewController {
         print(self.presentingViewController?.presentedViewController)
         print(self.presentingViewController)
         // Do any additional setup after loading the view.
+    }
+    override func viewDidLayoutSubviews() {
+        print("viewDidLayoutSubviews===PresentedViewController")
+       
     }
     
     @objc func consoleLog(){

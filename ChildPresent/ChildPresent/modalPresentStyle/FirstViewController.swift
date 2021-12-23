@@ -22,7 +22,7 @@ class FirstViewController: UIViewController {
     }
     @objc func PresentAction(){
         self.present(second, animated: true, completion: nil)
-        //Presenting ViewController에 대해서 Life Cycle 적용이 안됨
+        //Presenting ViewController(FirstViewController)에 대해서 Life Cycle 적용이 안됨
     }
 
     let second = SecondViewController()
