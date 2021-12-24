@@ -43,7 +43,8 @@ class ViewController: UIViewController {
         self.view = subview
     }
     //이미 뷰에 포함되어있는 서브뷰를 다른 뷰에 포함시키는건 가능할까? -> Yes
-    @objc func thirdTapAction(senderaa:Any){
+//    @objc func thirdTapAction(senderaa:String)//Error
+    @objc func thirdTapAction(senderaa:UITapGestureRecognizer){
         subView.addSubview(subViewThree)
         subViewThree.frame = CGRect(x: 0, y: 0, width: subView.frame.width/2, height: subView.frame.height/2)
     }

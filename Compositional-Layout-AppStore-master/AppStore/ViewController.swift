@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         collectionView = UICollectionView.init(frame: .zero,
                                                collectionViewLayout: makeLayout())
         // Assigning data source and background color
+      
         collectionView.dataSource = self
         collectionView.backgroundColor = .systemBackground
         // Adding the collection view to the view
@@ -80,6 +81,7 @@ class ViewController: UIViewController {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.interSectionSpacing = 20
         layout.configuration = config
+        //config.scrollDirection = .horizontal
         
         return layout
     }
