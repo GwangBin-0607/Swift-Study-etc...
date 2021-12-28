@@ -17,13 +17,13 @@ class CustomView: UIView {
     override init(frame: CGRect) {
         viewId = "gwangbin"
         leftView = UIView()
-        leftView.backgroundColor = .systemBlue
+        leftView.backgroundColor = .white
         rigtView = UIView()
-        rigtView.backgroundColor = .systemRed
+        rigtView.backgroundColor = .white
         topView = UIView()
-        topView.backgroundColor = .systemGray
+        topView.backgroundColor = .white
         bottomView = UIView()
-        bottomView.backgroundColor = .systemPink
+        bottomView.backgroundColor = .white
         super.init(frame: frame)
         self.addSubview(leftView)
         leftView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,8 +53,23 @@ class CustomView: UIView {
         NSLayoutConstraint(item: bottomView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.25, constant: 0.0).isActive = true
         bottomView.heightAnchor.constraint(equalTo: bottomView.widthAnchor).isActive = true
         
+//        leftView.alpha = 0.0
+//        rigtView.alpha = 0.0
+//        topView.alpha = 0.0
+//        bottomView.alpha = 0.0
         
-        
+    }
+    func fadeIn(){
+        leftView.alpha = 1.0
+        rigtView.alpha = 1.0
+        topView.alpha = 1.0
+        bottomView.alpha = 1.0
+    }
+    func fadeOut(){
+        leftView.alpha = 0.0
+        rigtView.alpha = 0.0
+        topView.alpha = 0.0
+        bottomView.alpha = 0.0
     }
     
     required init?(coder: NSCoder) {

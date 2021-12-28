@@ -10,35 +10,54 @@ import UIKit
 class ViewController: UIViewController {
    
     let subView = CustomView()
-    let subViewTwo = UIView()
+    var subViewCenterX:NSLayoutConstraint?
+    var subViewCenterY:NSLayoutConstraint?
+    let subViewTwo = CustomView()
     let subViewThree = UIView()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print(subView.bounds)
+        print(subViewTwo.bounds)
+    }
     override func loadView() {
         super.loadView()
-        let subview = UIView()
+        let subview = MainView()
+        
+        
+        
+        
+        
+        
         subview.addSubview(subView)
         subView.translatesAutoresizingMaskIntoConstraints = false
-        subView.topAnchor.constraint(equalTo: subview.topAnchor, constant:150.0).isActive = true
-        subView.leadingAnchor.constraint(equalTo: subview.leadingAnchor, constant: 150.0).isActive = true
+        subViewCenterY = subView.topAnchor.constraint(equalTo: subview.topAnchor, constant:50.0)
+        subViewCenterX = subView.leadingAnchor.constraint(equalTo: subview.leadingAnchor, constant: 50.0)
+        subViewCenterY?.isActive = true
+        subViewCenterX?.isActive = true
         subView.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
         subView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
-        subView.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        //subView.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
         subView.layer.backgroundColor = UIColor.darkGray.cgColor
+        subView.clipsToBounds = true
+        
         
         
         //subView.frame = CGRect(x: 50, y: 50, width: 350, height: 350)
         //subView.layer.cornerRadius = 60
         subview.addSubview(subViewTwo)
         subViewTwo.translatesAutoresizingMaskIntoConstraints = false
-        subViewTwo.topAnchor.constraint(equalTo: subview.topAnchor, constant:150.0).isActive = true
-        subViewTwo.leadingAnchor.constraint(equalTo: subview.leadingAnchor, constant: 150.0).isActive = true
+        subViewTwo.topAnchor.constraint(equalTo: subview.topAnchor, constant:250.0).isActive = true
+        subViewTwo.leadingAnchor.constraint(equalTo: subview.leadingAnchor, constant: 50.0).isActive = true
         subViewTwo.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
         subViewTwo.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
-        subViewTwo.backgroundColor = .yellow
+        subViewTwo.backgroundColor = .black
         subview.addSubview(subViewThree)
         subViewThree.frame = CGRect(x: 50, y: 450, width: 120, height: 120)
         subViewThree.layer.cornerRadius = 60
         subViewThree.backgroundColor = .green
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        let firstPanGesture = UIPanGestureRecognizer(target: self, action: #selector(firstPan))
+        subView.addGestureRecognizer(firstPanGesture)
 //        subView.addGestureRecognizer(tapGesture)
 //        subViewTwo.addGestureRecognizer(tapGesture)
 //        실행시에 subView의 Gesture은 없어진다 subViewTwo로 Gesture가 등록된다 -> Gesture은 Reference Type.
@@ -52,6 +71,11 @@ class ViewController: UIViewController {
         subview.backgroundColor = .white
         
         self.view = subview
+    }
+    @objc func firstPan(sender:UIPanGestureRecognizer){
+        print(sender.location(in: self.view))
+        subViewCenterX?.constant = sender.location(in: self.view).x
+        subViewCenterY?.constant = sender.location(in: self.view).y
     }
     //이미 뷰에 포함되어있는 서브뷰를 다른 뷰에 포함시키는건 가능할까? -> Yes
 //    @objc func thirdTapAction(senderaa:String)//Error
@@ -81,18 +105,29 @@ class ViewController: UIViewController {
     //한개의 뷰가 애니메이션 중이면 다른 뷰는 애니메이션이 가능할까? -> YES
     @objc func secondTapAction(senderaa:Any){
         print("Second Tap")
-        if subViewTwo.frame.width == 120{
-            //1
-            UIView.animate(withDuration: 4.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.subViewTwo.transform = CGAffineTransform(scaleX: 1.5, y: 1.5).translatedBy(x: 50, y: 50)
-            }, completion: nil)
-        }else{
-            //2
-            UIView.animate(withDuration: 4.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.subViewTwo.transform = .identity
-            }, completion: nil)
-        }
-        
+        if subViewTwo.frame.width == 50{
+  //            UIView.animate(withDuration: 0.35, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+  //                self.subView.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
+  //                self.subView.fadeIn()
+  //            }, completion: nil)
+              
+              UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+                  self.subViewTwo.transform = CGAffineTransform(scaleX: 4.0, y: 4.0).translatedBy(x: 55.0, y: 55.0)
+                  //self.subViewTwo.fadeIn()
+
+              }, completion: nil)
+          }else{
+  //            UIView.animate(withDuration: 0.35, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+  //                self.subView.transform = .identity
+  //                self.subView.fadeOut()
+  //            }, completion: nil)
+              UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+                  self.subViewTwo.transform = .identity
+               //self.subViewTwo.fadeOut()
+
+
+              }, completion: nil)
+          }
         
     }
 
@@ -101,13 +136,27 @@ class ViewController: UIViewController {
 //        print(senderaa)
 //        print(subView.gestureRecognizers)
 //        print(subViewTwo.gestureRecognizers)
-        if subView.frame.width == 50{
-            UIView.animate(withDuration: 3.2, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.subView.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
+      if subView.frame.width == 50{
+//            UIView.animate(withDuration: 0.35, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+//                self.subView.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
+//                self.subView.fadeIn()
+//            }, completion: nil)
+            
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.subView.transform = CGAffineTransform(scaleX: 4.0, y: 4.0).translatedBy(x: 30.0, y: 30.0)
+                //self.subView.fadeIn()
+
             }, completion: nil)
         }else{
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+//            UIView.animate(withDuration: 0.35, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+//                self.subView.transform = .identity
+//                self.subView.fadeOut()
+//            }, completion: nil)
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.subView.transform = .identity
+             //self.subView.fadeOut()
+
+
             }, completion: nil)
         }
         

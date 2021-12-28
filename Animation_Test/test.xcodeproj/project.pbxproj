@@ -17,6 +17,7 @@
 		D4220EF6274E429D0058E460 /* testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4220EF5274E429D0058E460 /* testUITests.swift */; };
 		D4220EF8274E429D0058E460 /* testUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4220EF7274E429D0058E460 /* testUITestsLaunchTests.swift */; };
 		D448ED5A277A984B004CEDDF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448ED59277A984B004CEDDF /* CustomView.swift */; };
+		D448ED5C277AA90A004CEDDF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448ED5B277AA90A004CEDDF /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		D4220EF7274E429D0058E460 /* testUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D4220F11274E43CC0058E460 /* LabelHeight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LabelHeight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D448ED59277A984B004CEDDF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		D448ED5B277AA90A004CEDDF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				D4220ED4274E42990058E460 /* AppDelegate.swift */,
 				D4220ED6274E42990058E460 /* SceneDelegate.swift */,
 				D4220ED8274E42990058E460 /* ViewController.swift */,
+				D448ED5B277AA90A004CEDDF /* MainView.swift */,
 				D448ED59277A984B004CEDDF /* CustomView.swift */,
 				D4220EDA274E42990058E460 /* Main.storyboard */,
 				D4220EDD274E429D0058E460 /* Assets.xcassets */,
@@ -274,6 +277,7 @@
 				D4220ED9274E42990058E460 /* ViewController.swift in Sources */,
 				D448ED5A277A984B004CEDDF /* CustomView.swift in Sources */,
 				D4220ED5274E42990058E460 /* AppDelegate.swift in Sources */,
+				D448ED5C277AA90A004CEDDF /* MainView.swift in Sources */,
 				D4220ED7274E42990058E460 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
