@@ -9,19 +9,30 @@ import UIKit
 
 class ViewController: UIViewController {
    
-    let subView = UIView()
+    let subView = CustomView()
     let subViewTwo = UIView()
     let subViewThree = UIView()
     override func loadView() {
         super.loadView()
         let subview = UIView()
         subview.addSubview(subView)
-        subView.frame = CGRect(x: 50, y: 50, width: 120, height: 120)
-        subView.layer.cornerRadius = 60
-        subView.backgroundColor = .red
+        subView.translatesAutoresizingMaskIntoConstraints = false
+        subView.topAnchor.constraint(equalTo: subview.topAnchor, constant:150.0).isActive = true
+        subView.leadingAnchor.constraint(equalTo: subview.leadingAnchor, constant: 150.0).isActive = true
+        subView.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
+        subView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        subView.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        subView.layer.backgroundColor = UIColor.darkGray.cgColor
+        
+        
+        //subView.frame = CGRect(x: 50, y: 50, width: 350, height: 350)
+        //subView.layer.cornerRadius = 60
         subview.addSubview(subViewTwo)
-        subViewTwo.frame = CGRect(x: 50, y: 250, width: 120, height: 120)
-        subViewTwo.layer.cornerRadius = 60
+        subViewTwo.translatesAutoresizingMaskIntoConstraints = false
+        subViewTwo.topAnchor.constraint(equalTo: subview.topAnchor, constant:150.0).isActive = true
+        subViewTwo.leadingAnchor.constraint(equalTo: subview.leadingAnchor, constant: 150.0).isActive = true
+        subViewTwo.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
+        subViewTwo.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
         subViewTwo.backgroundColor = .yellow
         subview.addSubview(subViewThree)
         subViewThree.frame = CGRect(x: 50, y: 450, width: 120, height: 120)
@@ -90,12 +101,12 @@ class ViewController: UIViewController {
 //        print(senderaa)
 //        print(subView.gestureRecognizers)
 //        print(subViewTwo.gestureRecognizers)
-        if subView.frame.width == 120{
-            UIView.animate(withDuration: 4.3, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.subView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5).translatedBy(x: 50, y: 50)
+        if subView.frame.width == 50{
+            UIView.animate(withDuration: 3.2, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.subView.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
             }, completion: nil)
         }else{
-            UIView.animate(withDuration: 4.3, delay: 0.0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.subView.transform = .identity
             }, completion: nil)
         }
