@@ -6,8 +6,36 @@
 //
 
 import UIKit
+protocol dele:UITableViewDelegate,UITableViewDataSource{
+   
+    
+}
+//class deleObject:NSObject,UITableViewDelegate,UITableViewDataSource{
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//       
+//        if indexPath.row > (Model.count-5){
+//            addData()
+//
+//        }
+//    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//        return Model.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCellPage", for: indexPath) as? CustomTableViewCell
+//        print("===========\(indexPath.row)==============")
+//        cell?.setNameLabel(data: Model.modelList?[indexPath.row])
+//        return cell ?? UITableViewCell()
+//    }
+//    //https://stackoverflow.com/questions/65937087/how-can-l-put-tableview-inside-collectionviewcell
+//
+//}
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+
+class ViewController: UIViewController, dele {
    /* func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         print(indexPaths)
         //indexPaths.last
@@ -46,6 +74,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var data:Bool = true
     let tblview = UITableView()
+    var table:dele?
     override func loadView() {
         super.loadView()
         let subView = UIView()
@@ -63,9 +92,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         tblview.estimatedRowHeight = .zero
+        table = self
         //tblview.prefetchDataSource = self
-        tblview.delegate = self
-        tblview.dataSource = self
+        tblview.delegate = table
+        tblview.dataSource = table
         tblview.register(CustomTableViewCell.self, forCellReuseIdentifier: "CustomTableViewCellPage")
         insertData()
         // Do any additional setup after loading the view.
