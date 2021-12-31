@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         
         subview.addSubview(subView)
         subView.translatesAutoresizingMaskIntoConstraints = false
-        subViewCenterY = subView.topAnchor.constraint(equalTo: subview.topAnchor, constant:50.0)
+        subViewCenterY = subView.topAnchor.constraint(equalTo: subview.topAnchor, constant:250.0)
         subViewCenterX = subView.leadingAnchor.constraint(equalTo: subview.leadingAnchor, constant: 50.0)
         subViewCenterY?.isActive = true
         subViewCenterX?.isActive = true
