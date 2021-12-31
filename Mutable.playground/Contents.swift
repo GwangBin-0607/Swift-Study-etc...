@@ -1,17 +1,32 @@
+class A{
+    func test(){
+        print("test A")
+    }
+}
+class B:A{
+    override func test() {
+        //super.test()
+        print("test B")
+    }
+}
+let bProperty = B()
+bProperty.test()
+
+
+
+
 struct S
 {
     var a:Int,
         b:Int
     
-    mutating
-    func withASetToZero(_ body:() -> ())
+    mutating func withASetToZero(_ body:() -> ())
     {
         self.a = 0
         body()
     }
     
-    mutating
-    func foo()
+    mutating func foo()
     {
         self.withASetToZero
         {
