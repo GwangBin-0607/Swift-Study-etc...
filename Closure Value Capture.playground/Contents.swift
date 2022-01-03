@@ -1,15 +1,28 @@
 import UIKit
 import Foundation
 
+func hihi(){
+    var list:Int? = 100
+    DispatchQueue.main.asyncAfter(deadline:.now() + 5.0, execute: {
+        print(list) // -> nil 지역변수로서 참조를 하나보다 -> 메서드도 참조유형이므로 메서드가 끝나기전에 값을 바꾸면 바뀐 값이 캡쳐가 된다.
+//            [list] in
+//            //캡쳐리스트 할때와 안할때 차이가 있다 값 유형이라도.
+//            print(list)
+        //print -> 100
+    })
+    list = nil
+}
+
+
 
 class ser{
     var number = 10
 }
 class test{
-    let serpro = ser()
-    lazy var second = serpro
+    let serpro = ser() //1
+    lazy var second = serpro //2
     lazy var clo = {
-        [serpro] in
+        [serpro] in //3
         print(serpro)
     }
    
@@ -19,7 +32,7 @@ let pro  = test()
 pro.clo()
 print(CFGetRetainCount(pro))
 print(pro.second)
-print("\(CFGetRetainCount(pro.serpro))===========")
+print("\(CFGetRetainCount(pro.serpro))===========")//4
 print("\(pro.serpro.number)===========")
 pro.serpro.number = 100
 print("\(pro.serpro.number)===========")

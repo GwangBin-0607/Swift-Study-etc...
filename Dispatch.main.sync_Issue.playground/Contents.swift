@@ -1,5 +1,14 @@
 import UIKit
 
+func hihi(){
+    var list:[Int] = [1,2,34,5,2,5]
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(2.0)), execute: {
+        print(list[5])
+    })
+    list = [1,3]
+}
+hihi()
+
 
 func database(complete:@escaping ()->Void){
     DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(2.0)), execute: {
