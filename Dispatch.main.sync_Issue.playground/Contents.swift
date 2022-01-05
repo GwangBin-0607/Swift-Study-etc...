@@ -1,17 +1,92 @@
 import UIKit
+import Foundation
+//
+//func hihi(){
+//    var list:[Int] = [1,2,34,5,2,5]
+//
+//    DispatchQueue.main.asyncAfter(deadline:.now() + 2.0, execute: {
+//        print(list[5])
+//           })
+//    list = [1,3]
+//}
+//hihi()
+print(class_getInstanceSize(UITableViewCell.self))//Byte
+let concurrent = DispatchQueue(label: "hello",attributes: .concurrent)
+let serial = DispatchQueue(label: "hello")
 
-func hihi(){
-    var list:[Int] = [1,2,34,5,2,5]
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(2.0)), execute: {
-        print(list[5])
+serial.async {
+    print("one Task Start")
+    serial.asyncAfter(deadline:.now() + 3.0, execute: {
+        print("one Task Complete")
     })
-    list = [1,3]
 }
-hihi()
+serial.async {
+    print("two Task Start")
+    serial.asyncAfter(deadline:.now() + 2.0, execute: {
+        print("two Task Complete")
+    })
+}
 
+
+let startDate = Date()
+print("start")
+concurrent.sync {
+    
+    print("one Task Complete")
+    
+    concurrent.sync {
+        
+        print("two Task Complete")
+        
+    }
+    
+}
+concurrent.sync {
+    print("complete")
+}
+serial.sync {
+    
+    print("one Task Complete")
+    
+    serial.sync {
+        
+        print("two Task Complete")
+        
+    }
+    
+}
+serial.sync {
+    print("complete")
+}
+
+
+
+print(Date().timeIntervalSince(startDate))
+
+
+
+
+
+
+class parameter{
+    static var methodNumber = 50
+}
+
+func returnFunction(){
+    print("start")
+    guard parameter.methodNumber>100 else{
+        return returnFunction()
+    }
+    print("complete")
+}
+DispatchQueue.global().async {
+    returnFunction()
+    parameter.methodNumber = 500
+    print("comcom")
+}
 
 func database(complete:@escaping ()->Void){
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(2.0)), execute: {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
         complete()
     })
 }
@@ -24,9 +99,6 @@ for i in 0..<10{
     
 }
 
-class parameter{
-    static var methodNumber = 50
-}
 
 
 class Service{
@@ -44,12 +116,6 @@ class Service{
 let serviceProperty = Service(Name: "coffee")
 serviceProperty.getServiceName()
 
-func returnFunction(){
-    print("start")
-    guard parameter.methodNumber>100 else{
-        return returnFunction()
-    }
-    print("complete")
-}
-returnFunction()
-parameter.methodNumber = 500
+
+returnFunction()//이게 끝나지 않는 이상
+parameter.methodNumber = 500//이거 안넘어감

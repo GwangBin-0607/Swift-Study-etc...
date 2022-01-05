@@ -37,7 +37,7 @@ public class imageUpload{
            requ.setValue("multipart/form-data;boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
            let httpBody = NSMutableData()
            print(httpBody)
-           let formField = ["name":"hihi"]
+           let formField = ["userId":"000010.7d222709c3224e92a91df421d98b5edd.0205","title":"hello","comment":"hello"]
            for (key,value) in formField{
                httpBody.appendString(convertFormField(named: key, value: value, using: boundary))
            }
@@ -51,6 +51,9 @@ public class imageUpload{
            guard let responseData = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) else{
                
                return
+           }
+           DispatchQueue.main.async{
+               print("hehe")
            }
            print(responseData)
        }.resume()
