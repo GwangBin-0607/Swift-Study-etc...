@@ -19,6 +19,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     let consoleBtn = UIButton()
     override func loadView() {
         super.loadView()
+        self.view.backgroundColor = .white
         print("loadView===ViewController")
     }
     override func viewDidLoad() {

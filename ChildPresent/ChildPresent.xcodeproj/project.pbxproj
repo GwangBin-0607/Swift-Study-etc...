@@ -22,6 +22,7 @@
 		D47E7D9227604B2600A29330 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E7D9127604B2600A29330 /* FirstViewController.swift */; };
 		D47E7D9427604B2D00A29330 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E7D9327604B2D00A29330 /* SecondViewController.swift */; };
 		D4C50D082786B901001199C8 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C50D072786B901001199C8 /* PageViewController.swift */; };
+		D4C983DB2787C76700B04451 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C983DA2787C76700B04451 /* ExampleViewController.swift */; };
 		D4EF0C81273A164300716FD3 /* animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EF0C80273A164300716FD3 /* animator.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		D47E7D9127604B2600A29330 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D47E7D9327604B2D00A29330 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D4C50D072786B901001199C8 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		D4C983DA2787C76700B04451 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		D4EF0C80273A164300716FD3 /* animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				D42138AF2702F6AE0051FAE7 /* ChildViewController.swift */,
 				D42138B12702F8E90051FAE7 /* PresentedViewController.swift */,
 				D4C50D072786B901001199C8 /* PageViewController.swift */,
+				D4C983DA2787C76700B04451 /* ExampleViewController.swift */,
 				D47E7D9527604B3100A29330 /* modalPresentStyle */,
 				D4EF0C80273A164300716FD3 /* animator.swift */,
 				D42138852702F69E0051FAE7 /* Main.storyboard */,
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C983DB2787C76700B04451 /* ExampleViewController.swift in Sources */,
 				D42138842702F69E0051FAE7 /* ViewController.swift in Sources */,
 				D4C50D082786B901001199C8 /* PageViewController.swift in Sources */,
 				D42138802702F69E0051FAE7 /* AppDelegate.swift in Sources */,
