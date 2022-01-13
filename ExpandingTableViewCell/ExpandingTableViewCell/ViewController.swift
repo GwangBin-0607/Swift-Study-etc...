@@ -47,11 +47,11 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = tableView.cellForRow(at: indexPath) as? TableViewCell
-        if list[indexPath.row].1{
-            cell?.secondContents.numberOfLines = 0
-        }else{
-            cell?.secondContents.numberOfLines = 1
-        }
+//        if list[indexPath.row].1{
+//            cell?.secondContents.numberOfLines = 0
+//        }else{
+//            cell?.secondContents.numberOfLines = 1
+//        }// - 3Case
         return UITableView.automaticDimension
        
         
@@ -59,15 +59,28 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? TableViewCell
         list[indexPath.row].1 = true
+//        cell?.secondContents.text = "Not Select -- Not Select -- Not Select -- Not Select\nawdnaowdnaiodnaidonao\nsadnaodnaiodnaodnasoidnaoidnaodaojdoiasdjoiadjaodjasiodjaoidjaodjaodjaoidjasoidjaojdaoidjaoidjaosdjas"// - 1 Case
 //        cell?.heightAction?.constant = 80
 //        guard let cells = tableView.indexPathsForVisibleRows else{
 //            return
 //        }
-        UIView.animate(withDuration: 2.75, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.75, options: .curveEaseInOut, animations: {
+//        UIView.animate(withDuration: 0.75, delay: 0.0, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.55, options: .curveEaseInOut, animations: {
+//            tableView.performBatchUpdates({
+//            }, completion: nil)
+//        }, completion: nil)// - 1 Case
+        
+        
+        UIView.animate(withDuration: 0.75, delay: 0.0, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.55, options: .curveEaseInOut, animations: {
             tableView.performBatchUpdates({
+                cell?.secondContents.text = "Not Select -- Not Select -- Not Select -- Not Select\nawdnaowdnaiodnaidonao\nsadnaodnaiodnaodnasoidnaoidnaodaojdoiasdjoiadjaodjasiodjaoidjaodjaodjaoidjasoidjaojdaoidjaoidjaosdjas"
             }, completion: nil)
-        }, completion: nil)
-
+        }, completion: nil)// - 2 Case
+        
+        
+//        UIView.animate(withDuration: 0.75, delay: 0.0, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.55, options: .curveEaseInOut, animations: {
+//            tableView.performBatchUpdates({
+//            }, completion: nil)
+//        }, completion: nil)// - 3 Case
         
         
     }
@@ -106,19 +119,19 @@ class TableViewCell:UITableViewCell{
         title.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10.0).isActive = true
         title.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10.0).isActive = true
        
-//       title.contentMode = .bottomLeft
+       title.contentMode = .bottomLeft
         title.numberOfLines = 0
         title.backgroundColor = .yellow
         title.text = "awidwaodnioandioandoaindoiandoiandioadnoindoiawndioawndioandioandoi"
 //        title.heightAnchor.constraint(greaterThanOrEqualToConstant: title.intrinsicContentSize.height).isActive = true
        print(title.intrinsicContentSize)
         
-        title.setContentHuggingPriority(UILayoutPriority(500), for: .vertical)
-        contents.setContentHuggingPriority(UILayoutPriority(550), for: .vertical)
-        secondContents.setContentHuggingPriority(UILayoutPriority(900), for: .vertical)
-//        title.setContentCompressionResistancePriority(UILayoutPriority(450), for: .vertical)
-//        contents.setContentCompressionResistancePriority(UILayoutPriority(450), for: .vertical)
-//        secondContents.setContentCompressionResistancePriority(UILayoutPriority(500), for: .vertical)
+//        title.setContentHuggingPriority(UILayoutPriority(500), for: .vertical)
+//        contents.setContentHuggingPriority(UILayoutPriority(550), for: .vertical)
+//        secondContents.setContentHuggingPriority(UILayoutPriority(900), for: .vertical)
+        title.setContentCompressionResistancePriority(UILayoutPriority(650), for: .vertical)
+        contents.setContentCompressionResistancePriority(UILayoutPriority(650), for: .vertical)
+        secondContents.setContentCompressionResistancePriority(UILayoutPriority(500), for: .vertical)
         
         
         self.contentView.addSubview(contents)
@@ -141,8 +154,9 @@ class TableViewCell:UITableViewCell{
 //        heightAction = secondContents.heightAnchor.constraint(equalToConstant: 42)
 //        heightAction?.isActive = true
         secondContents.backgroundColor = .red
-        secondContents.contentMode = .topLeft
-        secondContents.numberOfLines = 1
+        secondContents.contentMode = .topLeft //Very Important
+        secondContents.numberOfLines = 0 // - 1,2 Case
+//        secondContents.numberOfLines = 1 // - 3 Case
         secondContents.text = "Not Select -- Not Select -- Not Select -- Not Select\nawdnaowdnaiodnaidonao"
     }
     
