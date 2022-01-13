@@ -19,7 +19,7 @@ functionProperty("hihi",456)
 //print(CFGetRetainCount(functionProperty))
 /*Stack,Heap // Value,Reference*/
  func address(of object: UnsafeRawPointer) -> String{
-     //print(object)
+     print(object)
     let address = Int(bitPattern: object)
     return String(format: "%p", address)
 }
@@ -35,19 +35,28 @@ class Second:First{
 
 }
 
-
+struct testOptional{
+    var one:Int?
+    var two:Int?
+    var three:Int?
+    
+}
+print(MemoryLayout.size(ofValue: testOptional()))
 
 var first = First()//Reference Type//8Byte
 var second = first//Reference Type//8Byte
-var test = 123//Value Type//8Byte
-var testTwo:Int? = 456//Value Type//9Byte
-var testThree:Int? = 789//Value Type//9Byte
-var testFour = 789//Value Type//8Byte
-//print(first.self)//값이 주소이다 주소는 힙의 주소
+var test = 5//9223372036854775807//Value Type//8Byte. 64Bit
+var testTwo:Int? = 5//Value Type//9Byte
+var testThree:Int? = 5//Value Type//9Byte
+var testFour = 5//Value Type//8Byte
+print(second)
+print(first.self)//값이 주소이다 주소는 힙의 주소
 ////print(second.self)
 //print(test.self)
-////print(test.self)
-//print(address(of: &first))//1
+//print(test.self)
+
+print(address(of: &first))
+print(address(of: &second))//1
 //print(MemoryLayout.size(ofValue:first))//단위는 Byte = (8 Bit)
 //print(address(of: &second))// -> 1,2번은 8Byte차이가 난다 .16진수 표기법 0x109b74940 -> 0x109b74948 -> 0x109b74950
 //print(MemoryLayout.size(ofValue:second))
@@ -55,15 +64,15 @@ var testFour = 789//Value Type//8Byte
 //print(address(of: &test))
 //print(MemoryLayout.size(ofValue:test))
 //test = 345
-//print(test)
-//print(address(of: &test))
-//print(MemoryLayout.size(ofValue:test))
-//print(address(of: &testTwo))
-//print(MemoryLayout.size(ofValue:testTwo))
-//print(address(of: &testThree))
-//print(MemoryLayout.size(ofValue:testThree))
-//print(address(of: &testFour))
-//print(MemoryLayout.size(ofValue:testFour))
+print(test)
+print(address(of: &test))
+print(MemoryLayout.size(ofValue:test))
+print(address(of: &testTwo))
+print(MemoryLayout.size(ofValue:testTwo))
+print(address(of: &testThree))
+print(MemoryLayout.size(ofValue:testThree))
+print(address(of: &testFour))
+print(MemoryLayout.size(ofValue:testFour))
 
 //Stack Size
 print(class_getInstanceSize(First.self))//heap Size -> 기본적으로 8이 깔려있다
