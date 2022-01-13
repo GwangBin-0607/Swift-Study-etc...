@@ -39,18 +39,34 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCellPage", for: indexPath) as? TableViewCell
+        print(cell?.title.contentHuggingPriority(for: .vertical))
+        print(cell?.contents.contentHuggingPriority(for: .vertical))
+        print(cell?.secondContents.contentHuggingPriority(for: .vertical))
         
         return cell ?? UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = tableView.cellForRow(at: indexPath) as? TableViewCell
+        if list[indexPath.row].1{
+            cell?.secondContents.numberOfLines = 0
+        }else{
+            cell?.secondContents.numberOfLines = 1
+        }
         return UITableView.automaticDimension
+       
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? TableViewCell
-        cell?.heightAction?.constant = 80
-//        UIView.animate(withDuration: 1.00, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.75, options: .curveEaseInOut, animations: {
-//            cell?.layoutIfNeeded()
-//        }, completion: nil)
+        list[indexPath.row].1 = true
+//        cell?.heightAction?.constant = 80
+//        guard let cells = tableView.indexPathsForVisibleRows else{
+//            return
+//        }
+        UIView.animate(withDuration: 2.75, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.75, options: .curveEaseInOut, animations: {
+            tableView.performBatchUpdates({
+            }, completion: nil)
+        }, completion: nil)
 
         
         
@@ -58,13 +74,30 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     
     
 }
+class testLabel:UILabel{
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        print("draw")
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        print("Layout")
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 class TableViewCell:UITableViewCell{
-    let title = UILabel()
+    let title = testLabel()
     let contents = UILabel()
     let secondContents = UILabel()
-    var heightAction:NSLayoutConstraint?
+//    var heightAction:NSLayoutConstraint?
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        self.contentMode = .topLeft
         self.selectionStyle = .none
         self.contentView.backgroundColor = .blue
         self.contentView.addSubview(title)
@@ -79,6 +112,14 @@ class TableViewCell:UITableViewCell{
         title.text = "awidwaodnioandioandoaindoiandoiandioadnoindoiawndioawndioandioandoi"
 //        title.heightAnchor.constraint(greaterThanOrEqualToConstant: title.intrinsicContentSize.height).isActive = true
        print(title.intrinsicContentSize)
+        
+        title.setContentHuggingPriority(UILayoutPriority(500), for: .vertical)
+        contents.setContentHuggingPriority(UILayoutPriority(550), for: .vertical)
+        secondContents.setContentHuggingPriority(UILayoutPriority(900), for: .vertical)
+//        title.setContentCompressionResistancePriority(UILayoutPriority(450), for: .vertical)
+//        contents.setContentCompressionResistancePriority(UILayoutPriority(450), for: .vertical)
+//        secondContents.setContentCompressionResistancePriority(UILayoutPriority(500), for: .vertical)
+        
         
         self.contentView.addSubview(contents)
         contents.translatesAutoresizingMaskIntoConstraints = false
@@ -97,11 +138,11 @@ class TableViewCell:UITableViewCell{
         secondContents.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10.0).isActive = true
         secondContents.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10.0).isActive = true
         secondContents.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,constant: -10.0).isActive = true
-        heightAction = secondContents.heightAnchor.constraint(equalToConstant: 42)
-        heightAction?.isActive = true
+//        heightAction = secondContents.heightAnchor.constraint(equalToConstant: 42)
+//        heightAction?.isActive = true
         secondContents.backgroundColor = .red
         secondContents.contentMode = .topLeft
-        secondContents.numberOfLines = 0
+        secondContents.numberOfLines = 1
         secondContents.text = "Not Select -- Not Select -- Not Select -- Not Select\nawdnaowdnaiodnaidonao"
     }
     
