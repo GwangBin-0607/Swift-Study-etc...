@@ -10,20 +10,32 @@ import Foundation
 //    list = [1,3]
 //}
 //hihi()
-print(class_getInstanceSize(UITableViewCell.self))//Byte
+for i in 0..<500{
+    print(i)
+}
+DispatchQueue.main.sync {
+    print("complete")
+}
+for i in 500..<1000{
+    print(i)
+}
+class number{
+    var numberCheck:Int?
+}
+print(class_getInstanceSize(number.self))//Byte
 let concurrent = DispatchQueue(label: "hello",attributes: .concurrent)
 let serial = DispatchQueue(label: "hello")
 
 serial.async {
-    print("one Task Start")
+    print("one Serial Task Start")
     serial.asyncAfter(deadline:.now() + 3.0, execute: {
-        print("one Task Complete")
+        print("one Serial Task Complete")
     })
 }
 serial.async {
-    print("two Task Start")
+    print("two Serial Task Start")
     serial.asyncAfter(deadline:.now() + 2.0, execute: {
-        print("two Task Complete")
+        print("two Serial Task Complete")
     })
 }
 
@@ -32,17 +44,17 @@ let startDate = Date()
 print("start")
 concurrent.sync {
     
-    print("one Task Complete")
+    print("one concurrent Task Complete")
     
     concurrent.sync {
         
-        print("two Task Complete")
+        print("two concurrent Task Complete")
         
     }
     
 }
 concurrent.sync {
-    print("complete")
+    print("concurrent complete")
 }
 serial.sync {
     
