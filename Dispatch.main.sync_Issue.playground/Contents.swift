@@ -10,21 +10,29 @@ import Foundation
 //    list = [1,3]
 //}
 //hihi()
-for i in 0..<500{
-    print(i)
-}
-DispatchQueue.main.sync {
-    print("complete")
-}
-for i in 500..<1000{
-    print(i)
-}
+//for i in 0..<500{
+//    print(i)
+//}
+//DispatchQueue.main.sync {
+//    print("complete")
+//}
+//for i in 500..<1000{
+//    print(i)
+//}
 class number{
     var numberCheck:Int?
 }
 print(class_getInstanceSize(number.self))//Byte
 let concurrent = DispatchQueue(label: "hello",attributes: .concurrent)
 let serial = DispatchQueue(label: "hello")
+
+serial.async {
+    print("start")
+    serial.sync {
+        print("hello")
+    }
+    print("end")
+}
 
 serial.async {
     print("one Serial Task Start")
