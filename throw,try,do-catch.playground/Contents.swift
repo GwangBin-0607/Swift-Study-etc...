@@ -9,6 +9,7 @@ func printNumber(_ number: Int) throws -> Int {    // 1
   
    guard number > 100 else {
     //return 0
+       //throw 50//Thrown expression type 'Int' does not conform to 'Error'
        throw TestError.outOfRange                // 2
    }
    return text
