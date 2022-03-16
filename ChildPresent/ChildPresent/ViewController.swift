@@ -9,6 +9,9 @@ import UIKit
 
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
+    override var shouldAutomaticallyForwardAppearanceMethods: Bool {
+        return true
+    }
     
     let childView = UIView()
     let child = ChildViewController()
@@ -47,6 +50,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
          childViewCon.view.frame = childView.frame
          childView.addSubview(childViewCon.view)*/
         //child.preferredContentSize = CGSize(width: 500, height: 500)
+        
         
         self.addChild(child)
         child.didMove(toParent: self)
