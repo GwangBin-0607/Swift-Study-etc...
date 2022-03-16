@@ -10,6 +10,9 @@ import UIKit
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     override var shouldAutomaticallyForwardAppearanceMethods: Bool {
+        //self.presentedViewCon.modalPresentationStyle = .fullScreen
+        //위로 스타일을 바꿨을때 true를 리턴하면 Childviewcon도 view life cycle이 돌고
+        //false 이면 돌지 않는다.
         return true
     }
     
