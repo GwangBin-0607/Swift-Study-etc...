@@ -34,25 +34,25 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         print("im release")
 #endif
         
-        #if os(iOS)
+#if os(iOS)
         print("im iOS")
 #endif
         //childViewCon = UINavigationController(rootViewController: child)
         self.view.addSubview(childView)
         childView.frame = CGRect(x: 0.0, y: 0.0, width: 200, height: 300)
         childView.backgroundColor = .systemBlue
-
+        
         /*self.addChild(childViewCon)
-        childViewCon.didMove(toParent: self)
-        childViewCon.view.frame = childView.frame
-        childView.addSubview(childViewCon.view)*/
+         childViewCon.didMove(toParent: self)
+         childViewCon.view.frame = childView.frame
+         childView.addSubview(childViewCon.view)*/
         //child.preferredContentSize = CGSize(width: 500, height: 500)
-
+        
         self.addChild(child)
         child.didMove(toParent: self)
         child.view.frame = childView.frame
         childView.addSubview(child.view)
-
+        
         
         self.view.addSubview(presentBtn)
         presentBtn.frame = CGRect(x: 250, y: 20.0, width: 60.0, height: 60.0)
@@ -77,30 +77,30 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @objc func consoleLog(){
         print("console")
         
-       /* self.presentedViewCon.modalPresentationStyle = .popover
-        guard let vc = self.presentedViewCon.popoverPresentationController else{
-            return
-        }
-        print(self.presentedViewCon.popoverPresentationController)
-        self.presentedViewCon.preferredContentSize = CGSize(width: 30, height: 30)
-        vc.delegate = self
-        
-        vc.sourceView?.backgroundColor = .red
-        vc.sourceView = self.childView
-        vc.sourceRect = childView.bounds
-        vc.permittedArrowDirections = .up
-        self.present(presentedViewCon, animated: true, completion: nil)*/
+        /* self.presentedViewCon.modalPresentationStyle = .popover
+         guard let vc = self.presentedViewCon.popoverPresentationController else{
+         return
+         }
+         print(self.presentedViewCon.popoverPresentationController)
+         self.presentedViewCon.preferredContentSize = CGSize(width: 30, height: 30)
+         vc.delegate = self
+         
+         vc.sourceView?.backgroundColor = .red
+         vc.sourceView = self.childView
+         vc.sourceRect = childView.bounds
+         vc.permittedArrowDirections = .up
+         self.present(presentedViewCon, animated: true, completion: nil)*/
     }
     @objc func presentAction(){
         print("action")
         //self.presentedViewCon.modalPresentationStyle = .fullScreen
-
+        
         
         self.presentedViewCon.modalPresentationStyle = .custom
-         self.presentedViewCon.transitioningDelegate = self
-         self.present(presentedViewCon, animated: true, completion: nil)
-
-
+        self.presentedViewCon.transitioningDelegate = self
+        self.present(presentedViewCon, animated: true, completion: nil)
+        
+        
         //child.navigationController!.pushViewController(presentedViewCon, animated: true)
     }
     override func viewDidLayoutSubviews() {
@@ -147,11 +147,11 @@ extension ViewController:UIViewControllerTransitioningDelegate{
         
     }
     /*func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        print("method Call")
-        let custom = CustomPresent(presentedViewController: presented, presenting: presenting)
-        let hi = UIPopoverPresentationController(presentedViewController: presented, presenting: presenting)
-        return custom
-    }*/
+     print("method Call")
+     let custom = CustomPresent(presentedViewController: presented, presenting: presenting)
+     let hi = UIPopoverPresentationController(presentedViewController: presented, presenting: presenting)
+     return custom
+     }*/
     
     
 }

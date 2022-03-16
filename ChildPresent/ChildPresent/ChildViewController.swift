@@ -37,6 +37,10 @@ class ChildViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        print(parent)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear===ChildViewController")
