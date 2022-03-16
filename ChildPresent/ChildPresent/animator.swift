@@ -28,9 +28,9 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             return
           }
             presentViewCon = presentedViewCon
-            print(containerView.subviews)
-            print(containerView.superview)
-            print(containerView.superview?.superview)
+//            print(containerView.subviews)
+//            print(containerView.superview)
+//            print(containerView.superview?.superview)
             //print("animate")
             //print(containerView)
             //print(containerView.superview)

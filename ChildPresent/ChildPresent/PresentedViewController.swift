@@ -16,7 +16,7 @@ class PresentedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad===PresentedViewController")
-        self.view.backgroundColor = .systemTeal
+        self.view.backgroundColor = .white
         self.view.addSubview(consoleBtn)
         consoleBtn.frame = CGRect(x: 100, y: 100.0, width: 60.0, height: 60.0)
         consoleBtn.backgroundColor = .systemPink

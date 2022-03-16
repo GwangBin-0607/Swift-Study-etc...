@@ -146,12 +146,12 @@ extension ViewController:UIViewControllerTransitioningDelegate{
         return self.animator
         
     }
-    /*func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
      print("method Call")
      let custom = CustomPresent(presentedViewController: presented, presenting: presenting)
      let hi = UIPopoverPresentationController(presentedViewController: presented, presenting: presenting)
      return custom
-     }*/
+     }
     
     
 }
