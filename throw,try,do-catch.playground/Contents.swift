@@ -1,9 +1,21 @@
 import Foundation
 
+
+var list = [1,2,3,4]
+func listCheck(){
+    do{
+        var check = list[5]
+    }catch{
+        print(error)
+    }
+}
+listCheck()
+
 enum TestError : Error {
      case outOfRange                      // 1
      case invalidInput(testNum : Int)     // 2
 }
+var err = TestError.outOfRange
 func printNumber(_ number: Int) throws -> Int {    // 1
    var text = 222
   
@@ -47,7 +59,8 @@ class testB:testA{
 }
 let testAValue = testA()
 let testBValue = testB()
-let test = testAValue as? testB
+//let testTwo = testAValue as testB
+//let test = testBValue as? testA
 func bindingError(of bindedString:String?) throws -> String{
     guard let resultString = bindedString else{
         throw TestError.outOfRange
