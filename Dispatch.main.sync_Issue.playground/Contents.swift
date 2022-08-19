@@ -25,26 +25,88 @@ class number{
 print(class_getInstanceSize(number.self))//Byte
 let concurrent = DispatchQueue(label: "hello",attributes: .concurrent)
 let serial = DispatchQueue(label: "hello")
-
+print(Thread.isMainThread)
+//DispatchQueue.main.async {
+//    print("start")
+//
+//}
+//DispatchQueue.main.sync {
+//    print("hello")
+//}
+serial.sync {
+    print("start")
+    for _ in 0..<10{
+        print("1")
+        
+        
+    }
+}
+serial.sync {
+    print("hello")
+    for _ in 0..<10{
+        print("2")
+        
+        
+    }
+}
+print("end")
 serial.async {
     print("start")
-    serial.sync {
-        print("hello")
+    
+}
+serial.async {
+    print("hello")
+}
+print("end")
+
+//serial.sync {
+//    print("start")
+//
+//}
+//serial.sync {
+//    print("hello")
+//}
+//print("end")
+
+//serial.async {
+//    print("Serial Start")
+//    serial.sync {
+//        print("Serial Sync")
+//    }
+//
+//    print("Serial End")
+//}
+
+//concurrent.async {
+//    print("Concurrent Start")
+//    concurrent.sync {
+//        print("Concurrent Sync")
+//    }
+//
+//    print("Concurrent End")
+//}
+
+concurrent.async {
+    print("one Serial Task Start")
+    //    serial.asyncAfter(deadline:.now() + 3.0, execute: {
+    //        print("one Serial Task Complete")
+    //    })
+    for i in 0..<100{
+        print(i)
     }
-    print("end")
+    
 }
 
-serial.async {
-    print("one Serial Task Start")
-    serial.asyncAfter(deadline:.now() + 3.0, execute: {
-        print("one Serial Task Complete")
-    })
-}
-serial.async {
+
+
+concurrent.async {
     print("two Serial Task Start")
-    serial.asyncAfter(deadline:.now() + 2.0, execute: {
-        print("two Serial Task Complete")
-    })
+    //    serial.asyncAfter(deadline:.now() + 2.0, execute: {
+    //        print("two Serial Task Complete")
+    //    })
+    for i in 100..<200{
+        print(i)
+    }
 }
 
 
